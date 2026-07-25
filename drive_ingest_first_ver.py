@@ -17,7 +17,7 @@ CACHE_FILE = 'google_drive_cache.pkl'
 
 def get_api_service():
     flow = InstalledAppFlow.from_client_secrets_file(
-        'c:/Users/learnlogy1/dogsvscats/client_secret_817812521071-sjhuvarhesreu1h3jisb442s1msqeceb.apps.googleusercontent.com.json', 
+        'c:/Users/learnlogy1/dogsvscats/placeholder', 
         scopes=SCOPES
     )
     
@@ -45,7 +45,7 @@ def ingest_drive_data():
     print("Connecting to Google Drive...")
     loader = GoogleDriveLoader(
         folder_id='1uUtOtxon1VdnZ25xjbRTqnDL-IX8q9ZLl7WGCtAsITtS1ZikKmfDxc3ojC2qJ0Jiz7dR58zn',
-        credentials_path='c:/Users/learnlogy1/dogsvscats/client_secret_817812521071-sjhuvarhesreu1h3jisb442s1msqeceb.apps.googleusercontent.com.json',
+        credentials_path='c:/Users/learnlogy1/dogsvscats/placeholdercontent.com.json',
         token_path='c:/Users/learnlogy1/dogsvscats/token.json',
         file_types=['document'],
         recursive=True
