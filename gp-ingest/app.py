@@ -4,6 +4,8 @@ from groq import Groq
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+like_file = "likes_count.json"
+
 st.title("GP Extracted Examples from 26S64's google drive")
 st.markdown("""
 :rainbow[Hello]
@@ -57,15 +59,32 @@ if prompt:
     with st.chat_message("assistant"):
           st.markdown(reply)
 
+def load_likes():
+    if os.path.exists(LIKE_FILE):
+        try:
+            with open(LIKE_FILE, "r") as f:
+                return json.load(f).get("likes", 0)
+        except Exception:
+            return 0
+    return 0
+
+
+def save_likes(count):
+    with open(LIKE_FILE, "w") as f:
+        json.dump({"likes": count}, f)
+
+
+# 1. Initialize session state from file if not already loaded
 if "likes" not in st.session_state:
-    st.session_state.likes = 0
+    st.session_state.likes = load_likes()
 def increase_likes():
     st.session_state.likes += 1
     st.balloons()
       
 st.button(
-      label = f"{st.session_state.likes} people LOVE this",
+      label = f"{st.session_state.likes} time(s) pressed",
       on_click = increase_likes,   
 )
+st.markdown("built by hongr")
 
 st.subheader("Ask a question about GP examples: ")
