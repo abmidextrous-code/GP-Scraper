@@ -26,6 +26,6 @@ jobs:
       - run: |
           git config --global user.email "bot@ingest.com"
           git config --global user.name "Ingest Bot"
-          git add manifest.json
+          git add manifest.json gp-ingest/created_google_docs_index.json
           git commit -m "Auto-update manifest" || echo "Nothing to commit"
           git push
