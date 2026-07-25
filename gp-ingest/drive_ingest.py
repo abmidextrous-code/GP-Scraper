@@ -23,15 +23,19 @@ CACHE_FILE = 'google_drive_cache.pkl'
 FOLDER_ID = '1uUtOtxon1VdnZ25xjbRTqnDL-IX8q9ZLl7WGCtAsITtS1ZikKmfDxc3ojC2qJ0Jiz7dR58zn'
 
 def get_api_service():
-    flow = InstalledAppFlow.from_client_secrets_file(
-        'C:/Users/hongr/Downloads/gp-ingest/client_secret_817812521071-sjhuvarhesreu1h3jisb442s1msqeceb.apps.googleusercontent.com.json', 
+    creds = Credentials(
+        token=None,
+        refresh_token=os.environ["GDRIVE_REFRESH_TOKEN"],
+        client_id=os.environ["GDRIVE_CLIENT_ID"],
+        client_secret=os.environ["GDRIVE_CLIENT_SECRET"],
+        token_uri="https://oauth2.googleapis.com/token",
         scopes=SCOPES
     )
-    
-    creds = flow.run_local_server(port=0)
-    print("Refresh Token: ", creds.refresh_token)
-    print("Client ID: ", creds.client_id)
-    print("Client Secret: ", creds.client_secret)
+
+    creds.refresh(Request())
+    #print("Refresh Token: ", creds.refresh_token)
+    #print("Client ID: ", creds.client_id)
+    #print("Client Secret: ", creds.client_secret)
     return creds
 
 import threading
