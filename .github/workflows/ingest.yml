@@ -16,11 +16,11 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python drive_ingest.py
         env:
-          GDRIVE_REFRESH_TOKEN: ${{ secrets.1//0gVjLzZXtIVLwCgYIARAAGBASNwF-L9IrpajKEjrxx5YKz7wiYQ2ujfbKGDG0_-2FWNeP6iQQ5O2VpxVDP18_-gT5tBnH3PUkQ7M }}
-          GDRIVE_CLIENT_ID: ${{ secrets.817812521071-sjhuvarhesreu1h3jisb442s1msqeceb.apps.googleusercontent.com }}
-          GDRIVE_CLIENT_SECRET: ${{ secrets.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 }}
-          GDRIVE_FOLDER_ID: ${{ secrets.1uUtOtxon1VdnZ25xjbRTqnDL-IX8q9ZLl7WGCtAsITtS1ZikKmfDxc3ojC2qJ0Jiz7dR58zn }}
-          GROQ_API_KEY: ${{ secrets.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 }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       - run: |
           git config --global user.email "bot@ingest.com"
           git config --global user.name "Ingest Bot"
