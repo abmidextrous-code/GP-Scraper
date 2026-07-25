@@ -1,0 +1,29 @@
+name: Ingest
+
+on:
+  schedule:
+    - cron: '0 3 */4 * *'
+  workflow_dispatch: {}
+
+jobs:
+  run-ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python drive_ingest.py
+        env:
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.1//0gVjLzZXtIVLwCgYIARAAGBASNwF-L9IrpajKEjrxx5YKz7wiYQ2ujfbKGDG0_-2FWNeP6iQQ5O2VpxVDP18_-gT5tBnH3PUkQ7M }}
+          GDRIVE_CLIENT_ID: ${{ secrets.817812521071-sjhuvarhesreu1h3jisb442s1msqeceb.apps.googleusercontent.com }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.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 }}
+          GDRIVE_FOLDER_ID: ${{ secrets.1uUtOtxon1VdnZ25xjbRTqnDL-IX8q9ZLl7WGCtAsITtS1ZikKmfDxc3ojC2qJ0Jiz7dR58zn }}
+          GROQ_API_KEY: ${{ secrets.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 }}
+      - run: |
+          git config --global user.email "bot@ingest.com"
+          git config --global user.name "Ingest Bot"
+          git add manifest.json
+          git commit -m "Auto-update manifest" || echo "Nothing to commit"
+          git push
