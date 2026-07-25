@@ -61,11 +61,11 @@ if "likes" not in st.session_state:
     st.session_state.likes = 0
 def increase_likes():
     st.session_state.likes += 1
+    st.balloons()
       
 st.button(
       label = f"{st.session_state.likes} people LOVE this",
-      onclick = increase_likes
-      onclick = st.balloons()
+      on_click = increase_likes,   
 )
 
 st.subheader("Ask a question about GP examples: ")
