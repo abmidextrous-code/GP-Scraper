@@ -2,6 +2,7 @@ import streamlit as st
 import json
 from groq import Groq
 import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 st.title("GP Extracted Examples from 26S64's google drive")
 st.markdown("""
@@ -15,7 +16,7 @@ topic = st.selectbox(
             "Technology", "Economics", "Society", "Media", "General")
 )
 
-with open("created_google_docs_index.json") as f:
+with open(os.path.join(BASE_DIR, "created_google_docs_index.json")) as f:
             existing_index = json.load(f)
 
 if topic in existing_index:
@@ -23,7 +24,6 @@ if topic in existing_index:
 else:
         st.info("No examples yet, please wait 3-5 days for the files to automatically update.")
 
-st.subheader("Ask a question about GP examples: ")
 if "messages" not in st.session_state:
         st.session_state.messages = []
 for message in st.session_state.messages:
@@ -36,7 +36,7 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with open("gp_extracted_examples.json") as f:
+    with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
         examples = json.load(f)
 
         keyword = prompt.lower()
@@ -57,5 +57,15 @@ if prompt:
     with st.chat_message("assistant"):
           st.markdown(reply)
 
-if st.button("Give thanks: "):
-    st.balloons()
+if "likes" not in st.session_state:
+    st.session_state.likes = 0
+def increase_likes():
+    st.session_state.likes += 1
+      
+st.button(
+      label = f"{st.session_state.likes} people LOVE this",
+      onclick = increase_likes
+      onclick = st.balloons()
+)
+
+st.subheader("Ask a question about GP examples: ")
