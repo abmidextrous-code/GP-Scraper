@@ -43,7 +43,7 @@ def ingest_drive_data():
 
     print("Connecting to Google Drive...")
     loader = GoogleDriveLoader(
-        folder_id='1uUtOtxon1VdnZ25xjbRTqnDL-IX8q9ZLl7WGCtAsITtS1ZikKmfDxc3ojC2qJ0Jiz7dR58zn',
+        folder_id='placeholder,
         credentials=creds,    # <-- CHANGE THIS: Pass the live creds here
         file_types=['document'],
         recursive=True
@@ -222,7 +222,7 @@ def push_to_google_doc(extracted_results):
 import time
 from groq import Groq
 
-groq_client = Groq(api_key='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')
+groq_client = Groq(api_key='placeholder')
 
 def call_groq_model(sample_chunk):
     prompt = f"""
