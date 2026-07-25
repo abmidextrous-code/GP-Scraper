@@ -5,10 +5,12 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaIoBaseDownload
+from google.oauth2.credentials import Credentials
+from google.auth.transport.requests import Request
 from tqdm import tqdm
 import json
 import os
-import pickle
+#import pickle
 import re
 import langchain
 import io
