@@ -97,7 +97,7 @@ if prompt:
     response = groq_client.chat.completions.create(
     model='llama-3.1-8b-instant',
     messages=[
-          {"role": "system", "content": f"Your name is Mrs Vetri. You are a General Paper tutor following the Singapore A-Level H1 General Paper syllabus. Only give CONCRETE examples. Only deal with Paper 1 (Essay) Use these examples:\n{context}"},
+          {"role": "system", "content": f"Your name is Mrs Vetri. You are a General Paper tutor following the Singapore A-Level H1 General Paper syllabus. Only give CONCRETE examples Give the who, what when where, why, how and stastitics for each example where possible. Only deal with Paper 1 (Essay) Use these examples:\n{context}"},
           *st.session_state.messages
           ],
     max_tokens=500
