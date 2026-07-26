@@ -28,4 +28,5 @@ jobs:
           git config --global user.name "Ingest Bot"
           git add manifest.json gp-ingest/created_google_docs_index.json gp-ingest/gp_extracted_examples.json
           git commit -m "Auto-update manifest" || echo "Nothing to commit"
+          git pull --rebase origin main
           git push
