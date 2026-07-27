@@ -8,15 +8,17 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 st.title("GP Extracted Examples from 26S64's Google Drive")
-st.markdown("""
-:rainbow[Hello]
-""")
-st.markdown("""This is a General Paper example bank sorted by topic, extracted from the 26S64 C1 GP Google Drive. The bot searches through the drive and compile each example present into documents. The documents will update every 4 days(I hope). 
 
-You may choose to view the examples collated by topic from the dropdown menu, or use the bot to ask questions, that will give you info based ONLY from information from the google drive. ts basically a worse chatgpt cuz u cant send so many questions at once and it only extracts from the drive. lowkey added it for fun.
+with st.expander():
+    st.markdown("""
+    :rainbow[Hello]
+    """)
+    st.markdown("""This is a General Paper example bank sorted by topic, extracted from the 26S64 C1 GP Google Drive. The bot searches through the drive and compile each example present into documents. The documents will update every 4 days(I hope). 
 
-Please understand that some documents may appear relatively empty as there may not be enough content related to such topics, and that the bot is not perfect. Nevertheless, I have faith that it should work alright.""")
-st.markdown("built by hongr")
+    You may choose to view the examples collated by topic from the dropdown menu, or use the bot to ask questions, that will give you info based ONLY from information from the google drive. ts basically a worse chatgpt cuz u cant send so many questions at once and it only extracts from the drive. lowkey added it for fun.
+
+    Please understand that some documents may appear relatively empty as there may not be enough content related to such topics, and that the bot is not perfect. Nevertheless, I have faith that it should work alright.""")
+    st.markdown("built by hongr")
 
 st.divider()
 
