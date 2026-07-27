@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 st.title("GP Extracted Examples from 26S64's Google Drive")
 
-with st.expander():
+with st.expander("About"):
     st.markdown("""
     :rainbow[Hello]
     """)
