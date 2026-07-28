@@ -26,6 +26,7 @@ jobs:
       - run: |
           git config --global user.email "bot@ingest.com"
           git config --global user.name "Ingest Bot"
+          git pull --rebase origin main
           git add manifest.json || true
           git add gp-ingest/created_google_docs_index.json || true
           git add gp-ingest/gp_extracted_examples.json || true
