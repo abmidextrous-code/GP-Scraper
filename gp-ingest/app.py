@@ -98,8 +98,13 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
-        examples = json.load(f)
+    examples_path = os.path.join(BASE_DIR, "gp_extracted_examples.json")
+    if os.path.exists(examples_path:
+        with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
+            examples = json.load(f)
+
+    else:
+        examples = []
 
         keyword = prompt.lower()
         relevant = [e for e in examples if keyword in e.get("extraction", "").lower()][:2]
