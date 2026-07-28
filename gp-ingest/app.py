@@ -99,7 +99,7 @@ if prompt:
         st.markdown(prompt)
 
     examples_path = os.path.join(BASE_DIR, "gp_extracted_examples.json")
-    if os.path.exists(examples_path:
+    if os.path.exists(examples_path):
         with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
             examples = json.load(f)
 
