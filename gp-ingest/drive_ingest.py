@@ -151,6 +151,15 @@ def push_to_google_doc(extracted_results, creds):
     topic_re = re.compile(r"Topic:\s*([A-Za-z/ -]+)", re.IGNORECASE)
     title_re = re.compile(r"Title:\s*(.+?)(?=\n|\r|Description:|Context:|\Z)", re.IGNORECASE)
 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    INDEX_FILE = os.path.join(BASE_DIR, "created_google_docs_index.json")
+
+    if os.path.exists(INDEX_FILE):
+        with open(INDEX_FILE, "r", encoding="utf-8") as f:
+            existing_index = json.load(f)
+    else:
+        existing_index ={}
+
     # --- Step 1: Organize extractions into topics ---
     for item in extracted_results:
         ext_text = item.get("extraction", "")
@@ -180,7 +189,7 @@ def push_to_google_doc(extracted_results, creds):
             for line in part.splitlines():
                 clean_line = line.strip()
                 # Skip header label prefixes
-                if any(clean_line.lower().startswith(prefix) for prefix in ["topic:", "title:", "description:", "context:", "case study:    "]):
+                if any(clean_line.lower().startswith(prefix) for prefix in ["topic:", "title:", "description:", "context:", "case study:"]):
                     # If there is text AFTER "Description:" on the same line, keep only the text
                     colon_idx = clean_line.find(":")
                     content_after_colon = clean_line[colon_idx + 1:].strip()
@@ -214,18 +223,25 @@ def push_to_google_doc(extracted_results, creds):
                 topics_dict["General"].append(sub_entry)
 
     # --- Step 2: Create a separate document for each non-empty topic ---
-    created_docs_summary = {}
+    created_docs_summary = existing_index.copy()
 
     for topic, entries in topics_dict.items():
         if not entries:
             continue
 
         doc_title = f"GP Examples - {topic}"
-        doc = service.documents().create(body={"title": doc_title}).execute()
-        doc_id = doc.get('documentId')
+        #doc = service.documents().create(body={"title": doc_title}).execute()
+        if topic in existing_index:
+            doc_id = existing_index[topic]["doc_id"]
+            print(f"Appending to existing doc for {topic} ({doc_id})")
+            full_text = ""
+        else:
+            doc = service.documents().create(body={"title": doc_title}).execute()
+            doc_id = doc.get('documentId')
+            print(f"Created new doc for {topic} ({doc_id})...")
+            # Build text content for this topic
+            full_text = f"=== {topic.upper()} EXAMPLES ===\n\n"
 
-        # Build text content for this topic
-        full_text = f"=== {topic.upper()} EXAMPLES ===\n\n"
         for entry in entries:
             full_text += f"[Chunk #{entry['chunk_id']} | Source: {entry['source']}]\n"
             if entry["title"]:
@@ -235,7 +251,7 @@ def push_to_google_doc(extracted_results, creds):
         # Push text in a single insertText call
         service.documents().batchUpdate(
             documentId=doc_id,
-            body={'requests': [{'insertText': {'location': {'index': 1}, 'text': full_text}}]}
+            body={'requests': [{'insertText': {"endOfSegmentLocation": {}, 'text': full_text}}]}
         ).execute()
 
         doc_url = f"https://docs.google.com/document/d/{doc_id}/edit"
@@ -247,7 +263,7 @@ def push_to_google_doc(extracted_results, creds):
         print(f"Created '{doc_title}' ({len(entries)} entries): {doc_url}")
 
     # --- Step 3: Save link directory locally ---
-    with open("created_google_docs_index.json", "w", encoding="utf-8") as f:
+    with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(created_docs_summary, f, indent=4)
 
     print("\nDone! All topics pushed into separate Google Docs.")
@@ -273,7 +289,7 @@ def call_groq_model(sample_chunk):
     Topic: <Topic Name>
     Title: <Short, Professional Example Title under 5 words>
     Context: <1-2 sentences explaining the background, context, and key facts/stats (e.g. specific policies, historical background, figures, or geographical scope)>
-    Case Study / Concrete Detail: <2-3 sentences detailing the specific actions taken, specific actors involved (e.g., specific leaders, policies, organizations), mechanisms behind the issue>
+    Case Study / Concrete Detail: <2-4 sentences detailing the specific actions taken, specific actors involved (e.g., specific leaders, policies, organizations), mechanisms behind the issue>
     You should provide statistical evidence and data to substantiate your evidence where possible.
     
     If the chunk contains "Feedback", strictly DO NOT include it in your output. Only extract relevant GP example content.
