@@ -102,13 +102,14 @@ if prompt:
     if os.path.exists(examples_path):
         with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
             examples = json.load(f)
+        keyword = prompt.lower()
+        relevant = [e for e in examples if keyword in e.get("extraction", "").lower()][:2]
+        context = "\n\n".join([e["extraction"] for e in relevant])
 
     else:
         examples = []
 
-        keyword = prompt.lower()
-        relevant = [e for e in examples if keyword in e.get("extraction", "").lower()][:2]
-        context = "\n\n".join([e["extraction"] for e in relevant])
+        
 
 
     groq_client = Groq(api_key=os.environ['GROQ_API_KEY'])
