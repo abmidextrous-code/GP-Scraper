@@ -108,10 +108,8 @@ if prompt:
 
     else:
         examples = []
-
+        context = ""
         
-
-
     groq_client = Groq(api_key=os.environ['GROQ_API_KEY'])
     response = groq_client.chat.completions.create(
     model='llama-3.1-8b-instant',
