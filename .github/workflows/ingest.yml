@@ -26,7 +26,9 @@ jobs:
       - run: |
           git config --global user.email "bot@ingest.com"
           git config --global user.name "Ingest Bot"
-          git add manifest.json gp-ingest/created_google_docs_index.json gp-ingest/gp_extracted_examples.json
-          git commit -m "Auto-update manifest" || echo "Nothing to commit"
           git pull --rebase origin main
-          git push
+          git add manifest.json || true
+          git add created_google_docs_index.json gp-ingest/created_google_docs_index.json || true
+          git add gp_extracted_examples.json gp-ingest/gp_extracted_examples.json || true
+          git commit -m "Auto-update manifest and index" || echo "Nothing to commit"
+          git push || echo "Nothing to push"

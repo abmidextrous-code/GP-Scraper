@@ -28,13 +28,24 @@ topic = st.selectbox(
             "Technology", "Economics", "Society", "Media", "General")
 )
 
-with open(os.path.join(BASE_DIR, "created_google_docs_index.json")) as f:
-            existing_index = json.load(f)
+index_path = os.path.join(BASE_DIR, "created_google_docs_index.json")
+if os.path.exists(index_path):
+    with open(os.path.join(BASE_DIR, "created_google_docs_index.json")) as f:
+        existing_index = json.load(f)
 
-if topic in existing_index:
-        st.markdown(f"[View {topic} Examples]({existing_index[topic]['url']})")
+else: 
+    existing_index = {}
+topic_data = existing_index.get(topic)
+
+if isinstance(topic_data, dict) and "url" in topic_data:
+    st.markdown(f"[View {topic} Examples]({topic_data['url']})")
+elif isinstance(topic_data, str):
+    # Fallback in case topic_data was saved as a direct string or ID
+    url = topic_data if topic_data.startswith("http") else f"https://docs.google.com/document/d/{topic_data}/edit"
+    st.markdown(f"[View {topic} Examples]({url})")
+
 else:
-        st.info("No examples yet, please wait 3-5 days for the files to automatically update.")
+    st.info("No examples yet, please wait 3-5 days for the files to automatically update.")
 
 st.divider()
 with st.expander("Format of a GP essay"):
@@ -87,8 +98,13 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
-        examples = json.load(f)
+    examples_path = os.path.join(BASE_DIR, "gp_extracted_examples.json")
+    if os.path.exists(examples_path):
+        with open(os.path.join(BASE_DIR,"gp_extracted_examples.json")) as f:
+            examples = json.load(f)
+
+    else:
+        examples = []
 
         keyword = prompt.lower()
         relevant = [e for e in examples if keyword in e.get("extraction", "").lower()][:2]
@@ -99,7 +115,7 @@ if prompt:
     response = groq_client.chat.completions.create(
     model='llama-3.1-8b-instant',
     messages=[
-          {"role": "system", "content": f"Your name is Mrs Vetri. You are a General Paper tutor following the Singapore A-Level H1 General Paper syllabus. Only give CONCRETE examples Give the who, what when where, why, how and substantial statitics for each example where possible. Only deal with Paper 1 (Essay) Use these examples:\n{context}"},
+          {"role": "system", "content": f"Your name is Mrs Vetri. You are a General Paper tutor following the Singapore A-Level H1 General Paper syllabus. Only give CONCRETE examples Give the who, what when where, why, how and substantial statitics for each example where possible. Split the who what where when how into separate lines. Only deal with Paper 1 (Essay) Use these examples:\n{context}"},
           *st.session_state.messages
           ],
     max_tokens=500

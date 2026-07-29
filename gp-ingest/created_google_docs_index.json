@@ -1,27 +1,11 @@
 {
-    "Culture": {
-        "doc_id": "15dfCnD6tR7pGDRwV0-xu5owFDpylnPakeOEJMmZHQQw",
-        "url": "https://docs.google.com/document/d/15dfCnD6tR7pGDRwV0-xu5owFDpylnPakeOEJMmZHQQw/edit",
-        "count": 23
-    },
-    "Education": {
-        "doc_id": "1gXes3ZgJxh70JCsR2e9yYKaa5pqe9avPoyrAVln8UhQ",
-        "url": "https://docs.google.com/document/d/1gXes3ZgJxh70JCsR2e9yYKaa5pqe9avPoyrAVln8UhQ/edit",
-        "count": 3
-    },
-    "Environment": {
-        "doc_id": "1GeE8fWH2JALmZ5ZBpmxlHM-_7biNGAB4DuXnNTVYzE4",
-        "url": "https://docs.google.com/document/d/1GeE8fWH2JALmZ5ZBpmxlHM-_7biNGAB4DuXnNTVYzE4/edit",
-        "count": 3
-    },
-    "Economics": {
-        "doc_id": "1dB5CgJfE_mRjJrHAXbSMD_1h7l8SpDKJ56a8eDqRO9Q",
-        "url": "https://docs.google.com/document/d/1dB5CgJfE_mRjJrHAXbSMD_1h7l8SpDKJ56a8eDqRO9Q/edit",
-        "count": 1
-    },
-    "Society": {
-        "doc_id": "1f1wR7cnzpHpXzAyzo-Nf6TxbT2iuVjqhLsIi8HkoxsI",
-        "url": "https://docs.google.com/document/d/1f1wR7cnzpHpXzAyzo-Nf6TxbT2iuVjqhLsIi8HkoxsI/edit",
-        "count": 9
-    }
+  "Culture": "1xZQd0cPuJMJarZS7qaBxYULdhZchlispzEjmq_IkTKc",
+  "Politics": "1tynWlg_fgQ3Alvn32MjXuss8Lc_VaeqaON7OZesK6Z4",
+  "Education": "1LyvL3BSe95yvxTz_0m76X1dvWymPZRLOY_ghrVhQeEA",
+  "Environment": "1LOBs3Q7D1ZvmrWvPPw5KPMxUmjOLPd4HeuApeA7G0nc",
+  "Technology": "10B0nZGbOtxsgW6durpFSaehvz4xEgFWP0fKJJQOnl_o",
+  "Economics": "1gIfst35HvyVjMMgiQEn3c0DaAtY805UKq2BmuZhqrxw",
+  "Society": "18cHjCuj8_8kuZv-DWemRRX3Bj0OjQMktlB-aV8cQ7Ek",
+  "Media": "1dHR0LbGYQwAMZXv_MX1xPprnWBNz6lLs8mOHqqmJx8M",
+  "General": "1tO0khIacLZgEjSt6ycsOvSQL9qSIWLoz_vasZB6DAsU"
 }
