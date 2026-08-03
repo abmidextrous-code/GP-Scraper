@@ -232,7 +232,11 @@ def push_to_google_doc(extracted_results, creds):
         doc_title = f"GP Examples - {topic}"
         #doc = service.documents().create(body={"title": doc_title}).execute()
         if topic in existing_index:
-            doc_id = existing_index[topic]["doc_id"]
+            topic_data = existing_index[topic]
+            if isinstance(topic_data, dict):
+                doc_id = topic_data["doc_id"]
+            else:
+                doc_id = topic_data
             print(f"Appending to existing doc for {topic} ({doc_id})")
             full_text = ""
         else:
