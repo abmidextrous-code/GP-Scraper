@@ -1,11 +1,47 @@
 {
-  "Culture": "1xZQd0cPuJMJarZS7qaBxYULdhZchlispzEjmq_IkTKc",
-  "Politics": "1tynWlg_fgQ3Alvn32MjXuss8Lc_VaeqaON7OZesK6Z4",
-  "Education": "1LyvL3BSe95yvxTz_0m76X1dvWymPZRLOY_ghrVhQeEA",
-  "Environment": "1LOBs3Q7D1ZvmrWvPPw5KPMxUmjOLPd4HeuApeA7G0nc",
-  "Technology": "10B0nZGbOtxsgW6durpFSaehvz4xEgFWP0fKJJQOnl_o",
-  "Economics": "1gIfst35HvyVjMMgiQEn3c0DaAtY805UKq2BmuZhqrxw",
-  "Society": "18cHjCuj8_8kuZv-DWemRRX3Bj0OjQMktlB-aV8cQ7Ek",
-  "Media": "1dHR0LbGYQwAMZXv_MX1xPprnWBNz6lLs8mOHqqmJx8M",
-  "General": "1tO0khIacLZgEjSt6ycsOvSQL9qSIWLoz_vasZB6DAsU"
+    "Culture": {
+        "doc_id": "1xZQd0cPuJMJarZS7qaBxYULdhZchlispzEjmq_IkTKc",
+        "url": "https://docs.google.com/document/d/1xZQd0cPuJMJarZS7qaBxYULdhZchlispzEjmq_IkTKc/edit",
+        "count": 210
+    },
+    "Politics": {
+        "doc_id": "1tynWlg_fgQ3Alvn32MjXuss8Lc_VaeqaON7OZesK6Z4",
+        "url": "https://docs.google.com/document/d/1tynWlg_fgQ3Alvn32MjXuss8Lc_VaeqaON7OZesK6Z4/edit",
+        "count": 1
+    },
+    "Education": {
+        "doc_id": "1LyvL3BSe95yvxTz_0m76X1dvWymPZRLOY_ghrVhQeEA",
+        "url": "https://docs.google.com/document/d/1LyvL3BSe95yvxTz_0m76X1dvWymPZRLOY_ghrVhQeEA/edit",
+        "count": 111
+    },
+    "Environment": {
+        "doc_id": "1LOBs3Q7D1ZvmrWvPPw5KPMxUmjOLPd4HeuApeA7G0nc",
+        "url": "https://docs.google.com/document/d/1LOBs3Q7D1ZvmrWvPPw5KPMxUmjOLPd4HeuApeA7G0nc/edit",
+        "count": 292
+    },
+    "Technology": {
+        "doc_id": "10B0nZGbOtxsgW6durpFSaehvz4xEgFWP0fKJJQOnl_o",
+        "url": "https://docs.google.com/document/d/10B0nZGbOtxsgW6durpFSaehvz4xEgFWP0fKJJQOnl_o/edit",
+        "count": 12
+    },
+    "Economics": {
+        "doc_id": "1gIfst35HvyVjMMgiQEn3c0DaAtY805UKq2BmuZhqrxw",
+        "url": "https://docs.google.com/document/d/1gIfst35HvyVjMMgiQEn3c0DaAtY805UKq2BmuZhqrxw/edit",
+        "count": 18
+    },
+    "Society": {
+        "doc_id": "18cHjCuj8_8kuZv-DWemRRX3Bj0OjQMktlB-aV8cQ7Ek",
+        "url": "https://docs.google.com/document/d/18cHjCuj8_8kuZv-DWemRRX3Bj0OjQMktlB-aV8cQ7Ek/edit",
+        "count": 122
+    },
+    "Media": {
+        "doc_id": "1dHR0LbGYQwAMZXv_MX1xPprnWBNz6lLs8mOHqqmJx8M",
+        "url": "https://docs.google.com/document/d/1dHR0LbGYQwAMZXv_MX1xPprnWBNz6lLs8mOHqqmJx8M/edit",
+        "count": 3
+    },
+    "General": {
+        "doc_id": "1tO0khIacLZgEjSt6ycsOvSQL9qSIWLoz_vasZB6DAsU",
+        "url": "https://docs.google.com/document/d/1tO0khIacLZgEjSt6ycsOvSQL9qSIWLoz_vasZB6DAsU/edit",
+        "count": 1
+    }
 }
